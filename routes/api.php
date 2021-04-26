@@ -30,12 +30,12 @@ Route::prefix('auth')->name('auth.')->group(function () {
     });
 });
 
-Route::group(['middleware' => ['auth:api','scopes:user']], function () {
+Route::group(['middleware' => ['auth:api', 'scopes:user']], function () {
     /* Events Routes */
     Route::post('events/create', [EventController::class, 'createEvent'])->name('event.create');
 });
 
-Route::group(['middleware' => ['auth:admin-api','scopes:admin']], function () {
+Route::group(['middleware' => ['auth:admin-api', 'scopes:admin']], function () {
 
     /* Events Routes */
     Route::get('events', [EventController::class, 'getEvents'])->name('event.all');

@@ -17,7 +17,7 @@ class AuthController extends Controller
 {
     use ApiResponseTrait;
 
-    public function userLogin(LoginRequest $request)
+    public function userLogin(LoginRequest $request): JsonResponse
     {
         if ($request->validator->fails()) {
             return $this->apiResponse(null, $request->validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -36,7 +36,7 @@ class AuthController extends Controller
         return $this->apiResponse($data, 'Successfully Logged in', Response::HTTP_OK);
     }
 
-    public function adminLogin(LoginRequest $request)
+    public function adminLogin(LoginRequest $request): JsonResponse
     {
         if ($request->validator->fails()) {
             return $this->apiResponse(null, $request->validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
